@@ -436,11 +436,17 @@ footer p {
 
 .action-btn {
     flex: 1;
-    padding: 6px 12px;
-    font-size: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    padding: 8px 20px;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    justify-content: center;
 }
 
 .action-btn.secondary {
@@ -975,37 +981,30 @@ main {
 }
 
 .solution-card {
-    background: white;
-    padding: 20px;
+    background: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 16px;
 }
 
 .solution-card h4 {
     color: #0078d7;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+    font-size: 15px;
 }
 
 .solution-details {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
 }
 
 .detail-item {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    padding: 4px 0;
     border-bottom: 1px dashed #eee;
-}
-
-.detail-item .label {
-    color: #666;
-}
-
-.detail-item .value {
-    font-weight: bold;
-    color: #333;
 }
 
 .data-support {
@@ -2159,7 +2158,7 @@ main {
     margin-bottom: 5px;
 }
 
-/* 动态更新效果样式 */
+/* 动态更新果样式 */
 .update-info {
     display: flex;
     align-items: center;
@@ -2744,4 +2743,64 @@ main {
 
 .generate-btn:hover .btn-arrow {
     transform: translateX(4px);
+}
+
+/* 文字样式优化 */
+.highlight-text {
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.highlight-number {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2980b9;
+}
+
+.emphasis {
+    color: #16a085;
+    font-weight: 500;
+}
+
+/* 方案卡片样式 */
+.solution-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 16px;
+}
+
+/* 分步放款计划样式 */
+.schedule-title {
+    color: #34495e;
+    margin: 12px 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.schedule-list li {
+    display: flex;
+    margin-bottom: 6px;
+    align-items: center;
+    font-size: 13px;
+}
+
+/* 保险模块样式 */
+.module-title {
+    color: #34495e;
+    margin: 12px 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.coverage-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    padding: 4px 0;
+    border-bottom: 1px dashed #ecf0f1;
+    font-size: 13px;
 }
