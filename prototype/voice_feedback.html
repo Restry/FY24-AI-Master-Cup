@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语音反馈 - 微软会议记录</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>语音反馈</h1>
+        <!-- 导航将通过 JS 动态插入 -->
+    </header>
+    
+    <main>
+        <div class="meeting-header">
+            <div class="meeting-info">
+                <h2>🎯 微软方案讨论会议</h2>
+                <span class="meeting-status">进行中</span>
+            </div>
+            <button id="recordBtn" class="record-btn">
+                <span class="record-icon">🎤</span>
+                <span class="btn-text">开始录音</span>
+            </button>
+        </div>
+
+        <div class="conversation-container">
+            <div class="conversation-flow">
+                <div class="message client">
+                    <div class="message-header">
+                        <span class="speaker">微软代表</span>
+                        <span class="time">14:25</span>
+                    </div>
+                    <p>感谢贵公司长期以来的支持。今天主要想讨论一下我们未来的合作方向。</p>
+                </div>
+
+                <div class="message self">
+                    <div class="message-header">
+                        <span class="speaker">我</span>
+                        <span class="time">14:25</span>
+                    </div>
+                    <p>非常感谢。我们注意到贵公司近期有一些新的业务发展，很期待能够深入了解具体需求。</p>
+                </div>
+
+                <div class="message client">
+                    <div class="message-header">
+                        <span class="speaker">微软代表</span>
+                        <span class="time">14:26</span>
+                    </div>
+                    <p>是的，我们今年在亚太区的业务增长很快，特别是云服务方面。</p>
+                </div>
+
+                <div class="message self">
+                    <div class="message-header">
+                        <span class="speaker">我</span>
+                        <span class="time">14:27</span>
+                    </div>
+                    <p>确实，从数据上看，智能云业务已占到贵公司总收入的39%，是增长最快的板块。</p>
+                </div>
+
+                <div class="message client highlight">
+                    <div class="message-header">
+                        <span class="speaker">微软代表</span>
+                        <span class="time">14:30</span>
+                    </div>
+                    <p>基于这个增长趋势，我们正在全球范围内扩建研发中心，需要一个灵活的资金调配方案。同时，我们希望为全球员工提供统一的保险保障。</p>
+                </div>
+
+                <div class="message self highlight">
+                    <div class="message-header">
+                        <span class="speaker">我</span>
+                        <span class="time">14:31</span>
+                    </div>
+                    <p>关于跨区域的资金调配和保险方案，让我查询一下具体可以提供的服务...</p>
+                </div>
+
+                <div class="copilot-suggestion active">
+                    <div class="suggestion-header">
+                        <span class="ai-icon">🤖</span>
+                        <span class="suggestion-title">Copilot 建议</span>
+                    </div>
+                    <div class="suggestion-content">
+                        <p>可以从以下几个方面回应：</p>
+                        <ul>
+                            <li>我们提供全球资金池服务，支持多币种实时调配</li>
+                            <li>针对研发中心建设，可提供100亿美元授信额度</li>
+                            <li>全球员工保险可覆盖22.1万人，统一保障标准</li>
+                            <li>两个方案可以整合，提供综合性解决方案</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="message self">
+                    <div class="message-header">
+                        <span class="speaker">我</span>
+                        <span class="time">14:32</span>
+                    </div>
+                    <p>我们可以提供一个整合的解决方案：首先是全球资金池服务，支持多币种实时调配，可以为研发中心建设提供100亿美元的授信额度。同时，我们的全球员工保险方案可以覆盖贵公司全部22.1万名员工，确保统一的保障标准。</p>
+                </div>
+
+                <div class="message client">
+                    <div class="message-header">
+                        <span class="speaker">微软代表</span>
+                        <span class="time">14:33</span>
+                    </div>
+                    <p>这个方案听起来很不错，特别是能够整合资金和保险需求。能否详细说明一下具体的操作流程？</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="voice-controls">
+            <button class="control-btn pause">
+                <span class="icon">⏸</span>
+                <span>暂停</span>
+            </button>
+            <div class="audio-progress">
+                <div class="progress-bar">
+                    <div class="progress" style="width: 45%"></div>
+                </div>
+                <span class="time-stamp">02:15 / 05:00</span>
+            </div>
+            <button class="control-btn save">
+                <span class="icon">💾</span>
+                <span>保存</span>
+            </button>
+        </div>
+    </main>
+
+    <script src="js/navigation.js"></script>
+    <script>
+        document.getElementById('recordBtn').addEventListener('click', function() {
+            const btn = this;
+            const icon = btn.querySelector('.record-icon');
+            const text = btn.querySelector('.btn-text');
+            
+            if (btn.classList.contains('recording')) {
+                btn.classList.remove('recording');
+                icon.textContent = '🎤';
+                text.textContent = '开始录音';
+            } else {
+                btn.classList.add('recording');
+                icon.textContent = '🎤';
+                text.textContent = '录音中...';
+            }
+        });
+    </script>
+</body>
+</html>

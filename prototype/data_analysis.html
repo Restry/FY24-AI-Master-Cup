@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据分析 - 微软公司</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>数据分析</h1>
+      <!-- 导航将通过 JS 动态插入 -->
+    </header>
+
+    <main>
+      <div class="company-header">
+        <img src="assets/microsoft-logo.png" alt="Microsoft Logo" class="company-logo" />
+        <h2>微软公司 - 数据分析报告</h2>
+        <button id="analyzeBtn" class="analyze-btn">
+          <span class="btn-text">🔍 分析</span>
+          <div class="loading-effect hidden">
+            <svg class="analyze-loading" viewBox="0 0 24 24">
+              <circle class="loading-circle" cx="12" cy="12" r="10" />
+            </svg>
+          </div>
+        </button>
+      </div>
+
+      <div id="copilotInsight" class="copilot-insight hidden">
+        <div class="ai-icon">🤖</div>
+        <div class="insight-content">
+          <h3>Copilot 智能分析</h3>
+          <p class="insight-summary">
+            基于微软最新财报数据分析，发现两个关键业务机会：
+          </p>
+          <div class="insight-details">
+            <div class="insight-point">
+              <h4>💰 资金需求</h4>
+              <p>研发支出同比增长18%，全球研发中心扩建计划需要大量流动资金支持，建议提供灵活的信贷方案。</p>
+            </div>
+            <div class="insight-point">
+              <h4>🏥 员工福利</h4>
+              <p>全球员工规模增长5%，且正在推进员工福利提升计划，与我们的综合健康险产品高度匹配。</p>
+            </div>
+          </div>
+          <div class="insight-conclusion">
+            <strong>结论：</strong> 这是扩大合作的最佳时机，建议优先推进上述两个方向。
+          </div>
+        </div>
+      </div>
+
+      <section class="financial-data">
+        <h3>📈 公开财务数据</h3>
+        <div class="financial-metrics">
+          <div class="metric-card">
+            <h4>💎 2023财年关键指标</h4>
+            <div class="metrics-grid">
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span class="metric-label">💰 营业收入</span>
+                  <span class="metric-change up">↑ 7%</span>
+                </div>
+                <span class="metric-value">2,117亿美元</span>
+              </div>
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span class="metric-label">💵 净利润</span>
+                  <span class="metric-change up">↑ 3%</span>
+                </div>
+                <span class="metric-value">726亿美元</span>
+              </div>
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span class="metric-label">🔬 研发支出</span>
+                  <span class="metric-change up">↑ 18%</span>
+                </div>
+                <span class="metric-value">275亿美元</span>
+              </div>
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span class="metric-label">👥 全球员工</span>
+                  <span class="metric-change up">↑ 5%</span>
+                </div>
+                <span class="metric-value">22.1万人</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <h4>📊 业务部门收入占比</h4>
+            <div class="business-distribution">
+              <div class="business-item">
+                <div class="business-bar">
+                  <div class="business-progress azure" style="width: 39%"></div>
+                </div>
+                <div class="business-info">
+                  <span class="business-name">智能云</span>
+                  <span class="business-value">39%</span>
+                </div>
+              </div>
+              <div class="business-item">
+                <div class="business-bar">
+                  <div class="business-progress productivity" style="width: 32%"></div>
+                </div>
+                <div class="business-info">
+                  <span class="business-name">生产力和业务流程</span>
+                  <span class="business-value">32%</span>
+                </div>
+              </div>
+              <div class="business-item">
+                <div class="business-bar">
+                  <div class="business-progress more" style="width: 29%"></div>
+                </div>
+                <div class="business-info">
+                  <span class="business-name">更多个人计算</span>
+                  <span class="business-value">29%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="analysis-grid">
+        <section class="history-section">
+          <h3>📅 历史合作记录</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="date">2023</div>
+              <div class="content">
+                <h4>🏥 亚太区员工保险项目</h4>
+                <p>覆盖员工：12,000人</p>
+                <p>合作金额：¥2.8亿</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="date">2022</div>
+              <div class="content">
+                <h4>🏢 数据中心资产保险</h4>
+                <p>保障范围：8个数据中心</p>
+                <p>合作金额：¥1.5亿</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="ai-suggestions">
+          <h3>💡 智能匹配建议</h3>
+          <div class="suggestion-cards">
+            <div class="suggestion-card">
+              <h4>🏦 贷款服务建议</h4>
+              <ul>
+                <li>跨境资金池管理方案</li>
+                <li>灵活信贷额度：建议 50-100 亿</li>
+                <li>全球多币种支持</li>
+              </ul>
+            </div>
+            <div class="suggestion-card">
+              <h4>🛡️ 保险服务建议</h4>
+              <ul>
+                <li>全球员工统一保障计划</li>
+                <li>数字资产保险方案</li>
+                <li>研发中心财产保险升级</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="generate-proposal">
+        <div class="proposal-action">
+          <div class="proposal-info">
+            <h3>🎯 基于分析生成提案</h3>
+            <p>系统将根据上述数据分析结果，智能生成个性化的提案文档</p>
+          </div>
+          <a href="proposal.html" class="generate-btn">
+            <span class="btn-icon">📄</span>
+            <span class="btn-text">生成提案文档</span>
+            <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/navigation.js"></script> 
+    <script>
+      document.getElementById('analyzeBtn').addEventListener('click', function() {
+        const btn = this;
+        const btnText = btn.querySelector('.btn-text');
+        const loadingEffect = btn.querySelector('.loading-effect');
+        const insight = document.getElementById('copilotInsight');
+        
+        // 禁用按钮，显示加载动画
+        btn.disabled = true;
+        btnText.classList.add('hidden');
+        loadingEffect.classList.remove('hidden');
+        
+        // 2秒后显示分析结果
+        setTimeout(() => {
+          insight.classList.remove('hidden');
+          insight.classList.add('fade-in');
+          
+          // 恢复按钮状态
+          btn.disabled = false;
+          btnText.classList.remove('hidden');
+          loadingEffect.classList.add('hidden');
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>

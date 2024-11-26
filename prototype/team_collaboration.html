@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>团队协作</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>团队协作</h1>
+        <!-- 导航将通过 JS 动态插入 -->
+    </header>
+    
+    <main>
+        <div class="collab-header">
+            <h2>📋 微软项目任务分配</h2>
+            <div class="header-actions">
+                <button class="filter-btn">
+                    <span class="icon">🔍</span>
+                    筛选
+                </button>
+                <button class="add-task-btn">
+                    <span class="icon">➕</span>
+                    新建任务
+                </button>
+            </div>
+        </div>
+
+        <div class="task-board">
+            <div class="task-column">
+                <div class="column-header">
+                    <h3>待分配</h3>
+                    <span class="task-count">2</span>
+                </div>
+                <div class="task-list">
+                    <div class="task-item urgent">
+                        <div class="task-priority">优先级高</div>
+                        <h4>全球资金池方案设计</h4>
+                        <p class="task-desc">设计跨境资金调配方案，额度需求：100亿美元</p>
+                        <div class="task-meta">
+                            <span class="team">金融方案部</span>
+                            <span class="deadline">截止：2024-01-27</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="assign-btn">
+                                <span class="icon">👤</span>
+                                分配任务
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="task-item">
+                        <div class="task-priority normal">优先级中</div>
+                        <h4>操作流程文档编制</h4>
+                        <p class="task-desc">编制资金调配和保险方案的详细操作流程说明</p>
+                        <div class="task-meta">
+                            <span class="team">解决方案部</span>
+                            <span class="deadline">截止：2024-01-30</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="assign-btn">
+                                <span class="icon">👤</span>
+                                分配任务
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-column">
+                <div class="column-header">
+                    <h3>进行中</h3>
+                    <span class="task-count">1</span>
+                </div>
+                <div class="task-list">
+                    <div class="task-item urgent">
+                        <div class="task-priority">优先级高</div>
+                        <h4>全球员工保险方案设计</h4>
+                        <p class="task-desc">设计覆盖22.1万员工的统一保障方案</p>
+                        <div class="task-meta">
+                            <div class="assignee">
+                                <span class="avatar-emoji">👨‍💼</span>
+                                <span class="name">向辰</span>
+                            </div>
+                            <span class="team">保险产品部</span>
+                            <span class="deadline">截止：2024-01-27</span>
+                        </div>
+                        <div class="task-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 35%">35%</div>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <button class="comment-btn">
+                                <span class="icon">💬</span>
+                                评论 (2)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-column">
+                <div class="column-header">
+                    <h3>已完成</h3>
+                    <span class="task-count">0</span>
+                </div>
+                <div class="task-list empty">
+                    <div class="empty-message">
+                        <span class="icon">📝</span>
+                        <p>暂无已完成任务</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-members">
+            <h3>👥 团队成员</h3>
+            <div class="members-list">
+                <div class="member-card">
+                    <span class="member-avatar">👨‍💼</span>
+                    <div class="member-info">
+                        <span class="name">向辰</span>
+                        <span class="role">保险产品专家</span>
+                    </div>
+                    <span class="task-badge">1 个任务</span>
+                </div>
+                <div class="member-card">
+                    <span class="member-avatar">👩‍💼</span>
+                    <div class="member-info">
+                        <span class="name">李梅</span>
+                        <span class="role">金融方案专家</span>
+                    </div>
+                    <span class="task-badge">空闲</span>
+                </div>
+                <div class="member-card">
+                    <span class="member-avatar">👨‍💼</span>
+                    <div class="member-info">
+                        <span class="name">张强</span>
+                        <span class="role">解决方案专家</span>
+                    </div>
+                    <span class="task-badge">空闲</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>

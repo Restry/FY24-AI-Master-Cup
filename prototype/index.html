@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主任务界面</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>每日任务概览</h1>
+        <!-- 导航将通过 JS 动态插入 -->
+    </header>
+    
+    <main>
+        <div class="dashboard-grid">
+            <section class="key-clients">
+                <h2>重点客户列表</h2>
+                <div class="client-list">
+                    <a href="data_analysis.html" class="client-card-link">
+                        <div class="client-card highlight">
+                            <div class="client-header">
+                                <h3>微软公司</h3>
+                                <span class="tag urgent">需立即跟进</span>
+                            </div>
+                            <div class="client-details">
+                                <p class="focus-area">重点：资金管理与保险需求分析</p>
+                                <ul class="requirements">
+                                    <li>跨国企业资金规划方案设计</li>
+                                    <li>全球员工保险覆盖优化</li>
+                                    <li>数字化风险管理解决方案</li>
+                                </ul>
+                                <div class="estimated-value">预估合作价值：￥5000万</div>
+                                <div class="next-action">下一步：与CFO团队会议 (明日14:00)</div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <div class="client-card highlight">
+                        <div class="client-header">
+                            <h3>阿里巴巴</h3>
+                            <span class="tag pending">方案准备中</span>
+                        </div>
+                        <div class="client-details">
+                            <p class="focus-area">重点：企业保险方案定制</p>
+                            <ul class="requirements">
+                                <li>电商平台商家保障计划</li>
+                                <li>跨境贸易风险管理方案</li>
+                            </ul>
+                            <div class="estimated-value">预估合作价值：￥3000万</div>
+                            <div class="next-action">下一步：提案文档终稿审核</div>
+                        </div>
+                    </div>
+
+                    <div class="client-card">
+                        <div class="client-header">
+                            <h3>腾讯科技</h3>
+                            <span class="tag new">新需求</span>
+                        </div>
+                        <div class="client-details">
+                            <p class="focus-area">重点：游戏业务保险创新产品</p>
+                            <ul class="requirements">
+                                <li>虚拟资产保险方案设计</li>
+                                <li>游戏用户保障计划</li>
+                            </ul>
+                            <div class="estimated-value">预估合作价值：￥2800万</div>
+                            <div class="next-action">下一步：需求调研会议安排</div>
+                        </div>
+                    </div>
+
+                    <div class="client-card">
+                        <div class="client-header">
+                            <h3>比亚迪汽车</h3>
+                            <span class="tag progress">合作推进中</span>
+                        </div>
+                        <div class="client-details">
+                            <p class="focus-area">重点：新能源车险创新方案</p>
+                            <ul class="requirements">
+                                <li>电池组件专项保险</li>
+                                <li>海外市场保险支持</li>
+                                <li>充电桩设施保障方案</li>
+                            </ul>
+                            <div class="estimated-value">预估合作价值：￥4200万</div>
+                            <div class="next-action">下一步：产品方案研讨会</div>
+                        </div>
+                    </div>
+
+                    <div class="client-card">
+                        <div class="client-header">
+                            <h3>小米科技</h3>
+                            <span class="tag follow">持续跟进</span>
+                        </div>
+                        <div class="client-details">
+                            <p class="focus-area">重点：IoT设备保险服务</p>
+                            <ul class="requirements">
+                                <li>智能家居设备保障方案</li>
+                                <li>产品质保服务升级</li>
+                            </ul>
+                            <div class="estimated-value">预估合作价值：￥2500万</div>
+                            <div class="next-action">下一步：方案优化讨论</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="task-analysis">
+                <h2>任务分析概览</h2>
+                <div class="analysis-grid vertical">
+                    <div class="analysis-card">
+                        <h4>今日待处理</h4>
+                        <div class="task-overview-grid">
+                            <div class="stat-column">
+                                <div class="stat">
+                                    <span class="number">8</span>
+                                </div>
+                                <div class="completion-rate">
+                                    <span class="percent">35%</span>
+                                    <span class="label">已完成</span>
+                                </div>
+                            </div>
+                            <div class="priority-column">
+                                <div class="priority-distribution">
+                                    <div class="priority-item">
+                                        <div class="priority-bar">
+                                            <div class="priority-progress high" style="width: 37.5%"></div>
+                                        </div>
+                                        <span class="priority-label">高优先级: 3</span>
+                                    </div>
+                                    <div class="priority-item">
+                                        <div class="priority-bar">
+                                            <div class="priority-progress medium" style="width: 50%"></div>
+                                        </div>
+                                        <span class="priority-label">中优先级: 4</span>
+                                    </div>
+                                    <div class="priority-item">
+                                        <div class="priority-bar">
+                                            <div class="priority-progress low" style="width: 12.5%"></div>
+                                        </div>
+                                        <span class="priority-label">低优先级: 1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="action-btn">查看详情</button>
+                            <button class="action-btn secondary">添加任务</button>
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-card">
+                        <h4>进行中项目</h4>
+                        <div class="progress-stats">
+                            <div class="project-header">
+                                <span class="project-count">5个进���中</span>
+                                <button class="view-all">查看全部</button>
+                            </div>
+                            
+                            <div class="project-items">
+                                <div class="progress-item">
+                                    <div class="project-info">
+                                        <span class="project-name">方案制定</span>
+                                        <span class="project-meta">截止日期：12月20日</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 65%">65%</div>
+                                    </div>
+                                    <div class="project-details">
+                                        <span class="owner">负责人：张经理</span>
+                                        <span class="tag in-progress">进行中</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-item">
+                                    <div class="project-info">
+                                        <span class="project-name">客户沟通</span>
+                                        <span class="project-meta">截止日期：12月15日</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 40%">40%</div>
+                                    </div>
+                                    <div class="project-details">
+                                        <span class="owner">负责人：李总监</span>
+                                        <span class="tag pending">待反馈</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-item">
+                                    <div class="project-info">
+                                        <span class="project-name">风险评估</span>
+                                        <span class="project-meta">截止日期：12月25日</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 85%">85%</div>
+                                    </div>
+                                    <div class="project-details">
+                                        <span class="owner">负责人：王分析师</span>
+                                        <span class="tag urgent">加急</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/navigation.js"></script>
+    <script>
+        // 其他页面特定的 JavaScript
+    </script>
+</body>
+</html>
