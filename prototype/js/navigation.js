@@ -19,7 +19,7 @@ const navigationData = {
       label: '后续跟进',
       links: [
         { url: 'feedback_task.html', text: '反馈记录' },
-        { url: 'team_collaboration.html', text: '团队协作' },
+        // { url: 'team_collaboration.html', text: '团队协作' },
         { url: 'summary.html', text: '工作总结' }
       ]
     }
