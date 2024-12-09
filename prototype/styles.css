@@ -515,7 +515,7 @@ footer p {
     background: #555;
 }
 
-/* 为微软公司卡片添特殊样式 */
+/* 为M公司卡片添特殊样式 */
 .client-card:first-child {
     border-left: 4px solid #0078d7;
     background: #f0f7ff;
