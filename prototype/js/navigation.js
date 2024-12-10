@@ -65,7 +65,6 @@ function generateNavigation() {
 // 当DOM加载完成后初始化导航
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
-  const h1 = header.querySelector('h1');
   const nav = generateNavigation();
-  header.insertBefore(nav, h1.nextSibling);
+  header.appendChild(nav);
 });

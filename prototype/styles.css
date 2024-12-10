@@ -19,11 +19,16 @@ body {
 header {
   background-color: #0078d7;
   color: #fff;
-  padding: 20px 10px 25px;
+  padding: 0 20px;
   text-align: center;
   position: sticky;
   top: 0;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  min-height: 60px; 
+  display: flex;
+  justify-content: space-between;
 }
 
 header h1 {
@@ -32,18 +37,17 @@ header h1 {
 }
 
 nav {
-  margin-top: 10px;
+  margin-top: 0;
   display: flex;
-  justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
 }
 
 .nav-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: 15px;
 }
 
 .group-label {
@@ -51,6 +55,7 @@ nav {
   color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -1594,7 +1599,7 @@ main {
     font-weight: 500;
 }
 
-/* 更新反馈页面头部样式 */
+/* 更新反馈页面部样式 */
 .meeting-meta {
     display: flex;
     align-items: center;
@@ -2803,4 +2808,86 @@ main {
     padding: 4px 0;
     border-bottom: 1px dashed #ecf0f1;
     font-size: 13px;
+}
+
+.page-title {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+/* 流程步骤导航样式 */
+.step-nav {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 20px 0;
+}
+
+.step-item {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.step-item::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #e0e0e0;
+    top: 20px;
+    left: 50%;
+    z-index: 1;
+}
+
+.step-item:last-child::after {
+    display: none;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.step-text {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+}
+
+/* 激活状态样式 */
+.step-item.active .step-number {
+    background: #0078d7;
+    color: white;
+}
+
+.step-item.active .step-text {
+    color: #0078d7;
+    font-weight: 500;
+}
+
+/* 完成状态样式 */
+.step-item.completed .step-number {
+    background: #4CAF50;
+    color: white;
+}
+
+.step-item.completed::after {
+    background: #4CAF50;
 }
