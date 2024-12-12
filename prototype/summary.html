@@ -45,7 +45,7 @@
               <h4>关键要点</h4>
               <ul>
                 <li>客户正在全球范围内扩建研发中心，需要灵活的资金调配方案</li>
-                <li>计划为全球22.1万员工提供统一的保险保障</li>
+                <li>资金需求规模约100亿美元，要求分步实施</li>
                 <li>对具体操作流程表示关注，需要进一步说明</li>
               </ul>
             </div>
@@ -53,8 +53,8 @@
               <h4>推进情况</h4>
               <ul>
                 <li>已完成初步需求分析和方案匹配</li>
-                <li>已分配保险方案设计任务给向辰</li>
-                <li>资金池方案和操作流程文档待分配</li>
+                <li>资金池方案待分配给金融方案部</li>
+                <li>操作流程文档编制任务待分配给解决方案部</li>
               </ul>
             </div>
           </div>
@@ -73,21 +73,20 @@
                   <span class="priority-tag">优先</span>
                   分配全球资金池方案设计任务给金融方案团队
                 </li>
-                <li class="high-priority">
-                  <span class="priority-tag">优先</span>
-                  跟进向辰的保险方案设计进度
-                </li>
                 <li>
                   安排解决方案团队开始准备操作流程文档
+                </li>
+                <li>
+                  制定分步放款计划和风控措施
                 </li>
               </ul>
             </div>
             <div class="follow-ups">
               <h4>跟进事项</h4>
               <ul>
-                <li>与M确认下次会议时间，展示初步方案</li>
-                <li>整理完整的操作流程说明文档大纲</li>
-                <li>准备项目进度时间表</li>
+                <li>与M公司确认下次会议时间，展示初步方案</li>
+                <li>整理完整的资金调配操作流程说明文档大纲</li>
+                <li>准备项目实施进度时间表</li>
               </ul>
             </div>
           </div>
@@ -113,7 +112,7 @@
           </div>
           <div class="preview-item">
             <span class="item-label">预计成交</span>
-            <span class="item-value">8.3亿元</span>
+            <span class="item-value">4.5亿元</span>
           </div>
           <div class="preview-item">
             <span class="item-label">下次跟进</span>
@@ -121,8 +120,43 @@
           </div>
         </div>
       </div>
+
+      <!-- 添加提示框 -->
+      <div id="uploadSuccess" class="toast-message hidden">
+        <div class="toast-content">
+          <span class="toast-icon">✅</span>
+          <span class="toast-text">上传成功</span>
+        </div>
+      </div>
     </main>
 
     <script src="js/navigation.js"></script>
+    <!-- 添加上传处理脚本 -->
+    <script>
+      document.querySelector('.upload-btn').addEventListener('click', function() {
+        const btn = this;
+        const originalText = btn.innerHTML;
+        
+        // 显示加载状态
+        btn.disabled = true;
+        btn.innerHTML = '<span class="icon">🔄</span> 上传中...';
+        
+        // 模拟上传过程
+        setTimeout(() => {
+          // 恢复按钮状态
+          btn.disabled = false;
+          btn.innerHTML = originalText;
+          
+          // 显示成功提示
+          const toast = document.getElementById('uploadSuccess');
+          toast.classList.remove('hidden');
+          
+          // 2秒后隐藏提示
+          setTimeout(() => {
+            toast.classList.add('hidden');
+          }, 2000);
+        }, 1000);
+      });
+    </script>
   </body>
 </html>

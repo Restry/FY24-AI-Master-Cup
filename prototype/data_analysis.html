@@ -5,8 +5,215 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>数据分析 - M公司</title>
     <link rel="stylesheet" href="styles.css" />
+    <!-- <style>
+        /* AI对话动画样式 */
+        #ai-dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+        }
+
+        .dialog-container {
+            width: 80%;
+            max-width: 800px;
+            background: rgba(0, 40, 80, 0.8);
+            border: 2px solid #00ffff;
+            border-radius: 10px;
+            padding: 20px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dialog-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00ffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .conversation {
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .message {
+            opacity: 0;
+            transform: translateY(20px);
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 80%;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .message.manager {
+            background: rgba(0, 150, 255, 0.2);
+            margin-right: auto;
+            border-left: 3px solid #0096ff;
+        }
+
+        .message.copilot {
+            background: rgba(0, 255, 255, 0.2);
+            margin-left: auto;
+            border-right: 3px solid #00ffff;
+        }
+
+        .message-header {
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            color: #00ffff;
+        }
+
+        .message-content {
+            line-height: 1.4;
+        }
+
+        .typing-indicator {
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #00ffff;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typing 1s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .action-button {
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .action-button:hover {
+            background: rgba(0, 255, 255, 0.3);
+        }
+
+        .action-button.show {
+            display: inline-block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right,
+                transparent,
+                rgba(0, 255, 255, 0.5),
+                #00ffff,
+                rgba(0, 255, 255, 0.5),
+                transparent
+            );
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(1000%); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .main-content {
+            display: none;
+        }
+
+        /* 声音波纹动画 */
+        .voice-wave {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #00ffff;
+            border-radius: 50%;
+            animation: wave 1.5s infinite;
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .wave:nth-child(3) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+    </style> -->
   </head>
   <body>
+    <!-- AI对话界面 -->
+    <div id="ai-dialog">
+        <div class="scan-line"></div>
+        <div class="dialog-container">
+            <!-- <div class="dialog-header">
+                <h2>AI 智能分析助手</h2>
+            </div> -->
+            <div class="conversation" id="conversation">
+                <!-- 对话内容将通过JavaScript动态添加 -->
+            </div>
+        </div>
+    </div>
+
     <header>
       <h1>数据分析</h1>
       <!-- 导航将通过 JS 动态插入 -->
@@ -43,18 +250,9 @@
                 <li>全球多币种支持</li>
               </ul>
             </div>
-            <div class="insight-point">
-              <h4>🏥 员工福利</h4>
-              <p>全球员工规模增长5%，且正在推进员工福利提升计划。</p>
-              <ul class="suggestion-list">
-                <li>全球员工统一保障计划</li>
-                <li>数字资产保险方案</li>
-                <li>研发中心财产保险升级</li>
-              </ul>
-            </div>
           </div>
           <div class="insight-conclusion">
-            <strong>结论：</strong> 这是扩大合作的最佳时机，建议优先推进上述两个方向。
+            <strong>结论：</strong> 建议优先推进资金支持方案，满足其研发投入和全球扩张需求。
           </div>
         </div>
       </div>
@@ -133,7 +331,7 @@
 
       <div class="analysis-grid">
         <section class="history-section">
-          <h3>📅 历史合作记录</h3>
+          <h3>📅 历史作记录</h3>
           <div class="timeline">
             <div class="timeline-item">
               <div class="date">2023</div>
@@ -216,6 +414,145 @@
           loadingEffect.classList.add('hidden');
         }, 2000);
       });
+    </script>
+    <script>
+        // 语音合成设置
+        const synth = window.speechSynthesis;
+        const voices = [];
+
+        function loadVoices() {
+            voices.push(...synth.getVoices());
+        }
+
+        loadVoices();
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = loadVoices;
+        }
+
+        // 对话内容
+        const dialogFlow = [
+            {
+                role: 'manager',
+                content: '请深入分析M公司的财务状况，特别是他们在资金方面的需求。'
+            },
+            {
+                role: 'copilot',
+                content: '分析显示，M公司全球研发中心的扩建需要大量流动资金支持，其全球化布局对资金灵活性要求高。'
+            },
+            {
+                role: 'manager',
+                content: '明白了。我们的���款产品如何能更好地匹配这些需求？'
+            },
+            {
+                role: 'copilot',
+                content: '建议提供50亿元短期贷款，采用分步放款机制，既满足资金需求，又确保资金灵活调配。'
+            },
+            {
+                role: 'manager',
+                type: 'action',
+                content: '生成提案'
+            },
+            {
+                role: 'copilot',
+                content: '请优化提案内容，使其更加精准全面。'
+            },
+            {
+                role: 'copilot',
+                content: '建议贷款金额为50亿元，分三个阶段放款，根据项目进度逐步发放，确保资金安全和合理使用。'
+            }
+        ];
+
+        // 创建消息元素
+        function createMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${message.role}`;
+            
+            let content = '';
+            
+            // 添加声音波纹动画
+            const voiceWave = `
+                <div class="voice-wave">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+            `;
+
+            if (message.type === 'action') {
+                content = `
+                    <button class="action-button" onclick="handleAction('${message.content}')">
+                        ${message.content}
+                    </button>
+                `;
+            } else {
+                content = `
+                    <div class="message-header">
+                        ${voiceWave}
+                        ${message.role === 'manager' ? '客户经理' : 'Copilot'}
+                    </div>
+                    <div class="message-content">${message.content}</div>
+                `;
+            }
+
+            messageDiv.innerHTML = content;
+            return messageDiv;
+        }
+
+        // 语音播放
+        function speak(text, role) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = 1;
+            utterance.pitch = 1;
+            utterance.volume = 0.8;
+            
+            // 为不同角色设置不同的声音
+            if (voices.length > 0) {
+                utterance.voice = role === 'manager' ? voices[0] : voices[1];
+            }
+            
+            synth.speak(utterance);
+        }
+
+        // 处理动作按钮
+        function handleAction(action) {
+            if (action === '生成提案') {
+                // 显示主内容
+                document.querySelector('.main-content').style.display = 'block';
+                // 隐藏对话界面
+                document.getElementById('ai-dialog').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('ai-dialog').style.display = 'none';
+                }, 1000);
+            }
+        }
+
+        // 开始对话流程
+        async function startDialog() {
+            const conversation = document.getElementById('conversation');
+            
+            for (let i = 0; i < dialogFlow.length; i++) {
+                const message = dialogFlow[i];
+                const messageElement = createMessage(message);
+                conversation.appendChild(messageElement);
+                
+                // 添加显示动画
+                await new Promise(resolve => setTimeout(resolve, 500));
+                messageElement.classList.add('show');
+                
+                // 播放语音
+                if (message.type !== 'action') {
+                    speak(message.content, message.role);
+                }
+                
+                // 等待语音播放和动画完成
+                await new Promise(resolve => setTimeout(resolve, 
+                    message.type === 'action' ? 1000 : message.content.length * 100
+                ));
+            }
+        }
+
+        // 页面加载完成后开始对话
+        // document.addEventListener('DOMContentLoaded', startDialog);
     </script>
   </body>
 </html>
