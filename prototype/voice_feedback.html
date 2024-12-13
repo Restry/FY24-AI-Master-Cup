@@ -1,148 +1,235 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>语音反馈 - M会议记录</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/typewriter-effect/dist/core.js" />
+    <style>
+      .analysis-btn {
+        background-color: #007aff;
+        color: white;
+        border: none;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: background-color 0.3s;
+      }
+
+      .analysis-btn:hover {
+        background-color: #0056b3;
+      }
+
+      .initial-record-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: #dd0000d9;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.3s;
+        box-shadow: 0 0 10px 0 rgba(77, 7, 7, 0.1);
+      }
+
+      .initial-record-btn:hover {
+        background-color: #ff0000;
+        transform: translate(-50%, -50%) scale(1.05);
+      }
+
+      .initial-record-btn .record-icon {
+        font-size: 32px;
+      }
+
+      .meeting-content {
+        display: none;
+      }
+
+      .meeting-content.active {
+        display: block;
+      }
+
+      .voice-controls {
+        display: none;
+      }
+
+      .voice-controls.active {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
     <header>
-        <h1>语音反馈</h1>
-        <!-- 导航将通过 JS 动态插入 -->
+      <h1>语音反馈</h1>
+      <!-- 导航将通过 JS 动态插入 -->
     </header>
-    
-    <main>
-        <div class="meeting-header">
-            <div class="meeting-info">
-                <h2>🎯 M方案讨论会议</h2>
-                <span class="meeting-status">进行中</span>
-            </div>
-            <button id="recordBtn" class="record-btn">
-                <span class="record-icon">🎤</span>
-                <span class="btn-text">开始录音</span>
-            </button>
+
+    <button id="initialRecordBtn" class="initial-record-btn">
+      <span class="record-icon">🎤</span>
+      <span class="btn-text">开始录音</span>
+    </button>
+
+    <main class="meeting-content">
+      <div class="meeting-header">
+        <div class="meeting-info">
+          <h2>🎯 M方案讨论会议</h2>
         </div>
+        <button id="recordBtn" class="record-btn">
+          <span class="record-icon">🎤</span>
+          <span class="btn-text">开始录音</span>
+        </button>
+      </div>
 
-        <div class="conversation-container">
-            <div class="conversation-flow">
-                <div class="message client">
-                    <div class="message-header">
-                        <span class="speaker">M代表</span>
-                        <span class="time">14:25</span>
-                    </div>
-                    <p>感谢贵公司长期以来的支持。今天主要想讨论一下我们未来的合作方向。</p>
-                </div>
-
-                <div class="message self">
-                    <div class="message-header">
-                        <span class="speaker">我</span>
-                        <span class="time">14:25</span>
-                    </div>
-                    <p>非常感谢。我们注意到贵公司近期有一些新的业务发展，很期待能够深入了解具体需求。</p>
-                </div>
-
-                <div class="message client">
-                    <div class="message-header">
-                        <span class="speaker">M代表</span>
-                        <span class="time">14:26</span>
-                    </div>
-                    <p>是的，我们今年在亚太区的业务增长很快，特别是云服务方面。</p>
-                </div>
-
-                <div class="message self">
-                    <div class="message-header">
-                        <span class="speaker">我</span>
-                        <span class="time">14:27</span>
-                    </div>
-                    <p>确实，从数据上看，智能云业务已占到贵公司总收入的39%，是增长最快的板块。</p>
-                </div>
-
-                <div class="message client highlight">
-                    <div class="message-header">
-                        <span class="speaker">M代表</span>
-                        <span class="time">14:30</span>
-                    </div>
-                    <p>基于这个增长趋势，我们正在全球范围内扩建研发中心，需要一个灵活的资金调配方案。同时，我们希望为全球员工提供统一的保险保障。</p>
-                </div>
-
-                <div class="message self highlight">
-                    <div class="message-header">
-                        <span class="speaker">我</span>
-                        <span class="time">14:31</span>
-                    </div>
-                    <p>关于跨区域的资金调配和保险方案，让我查询一下具体可以提供的服务...</p>
-                </div>
-
-                <div class="copilot-suggestion active">
-                    <div class="suggestion-header">
-                        <span class="ai-icon">🤖</span>
-                        <span class="suggestion-title">Copilot 建议</span>
-                    </div>
-                    <div class="suggestion-content">
-                        <p>可以从以下几个方面回应：</p>
-                        <ul>
-                            <li>我们提供全球资金池服务，支持多币种实时调配</li>
-                            <li>针对研发中心建设，可提供100亿美元授信额度</li>
-                            <li>全球员工保险可覆盖22.1万人，统一保障标准</li>
-                            <li>两个方案可以整合，提供综合性解决方案</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="message self">
-                    <div class="message-header">
-                        <span class="speaker">我</span>
-                        <span class="time">14:32</span>
-                    </div>
-                    <p>我们可以提供一个整合的解决方案：首先是全球资金池服务，支持多币种实时调配，可以为研发中心建设提供100亿美元的授信额度。同时，我们的全球员工保险方案可以覆盖贵公司全部22.1万名员工，确保统一的保障标准。</p>
-                </div>
-
-                <div class="message client">
-                    <div class="message-header">
-                        <span class="speaker">M代表</span>
-                        <span class="time">14:33</span>
-                    </div>
-                    <p>这个方案听起来很不错，特别是能够整合资金和保险需求。能否详细说明一下具体的操作流程？</p>
-                </div>
-            </div>
+      <div class="conversation-container">
+        <div class="conversation-flow">
+          <!-- 对话内容将由 JS 动态插入 -->
         </div>
+      </div>
 
-        <div class="voice-controls">
-            <button class="control-btn pause">
-                <span class="icon">⏸</span>
-                <span>暂停</span>
-            </button>
-            <div class="audio-progress">
-                <div class="progress-bar">
-                    <div class="progress" style="width: 45%"></div>
-                </div>
-                <span class="time-stamp">02:15 / 05:00</span>
-            </div>
-            <button class="control-btn save">
-                <span class="icon">💾</span>
-                <span>保存</span>
-            </button>
+      <div class="voice-controls">
+        <button class="control-btn pause">
+          <span class="icon">⏸</span>
+          <span>暂停</span>
+        </button>
+        <div class="audio-progress">
+          <div class="progress-bar">
+            <div class="progress" style="width: 0%"></div>
+          </div>
+          <span class="time-stamp">00:00 / 05:00</span>
         </div>
+        <button class="control-btn save">
+          <span class="icon">💾</span>
+          <span>保存</span>
+        </button>
+      </div>
     </main>
 
     <script src="js/navigation.js"></script>
+    <script src="https://unpkg.com/typewriter-effect/dist/core.js"></script>
+    <script src="js/conversation.js"></script>
     <script>
-        document.getElementById('recordBtn').addEventListener('click', function() {
-            const btn = this;
-            const icon = btn.querySelector('.record-icon');
-            const text = btn.querySelector('.btn-text');
-            
-            if (btn.classList.contains('recording')) {
-                btn.classList.remove('recording');
-                icon.textContent = '🎤';
-                text.textContent = '开始录音';
-            } else {
-                btn.classList.add('recording');
-                icon.textContent = '🎤';
-                text.textContent = '录音中...';
-            }
-        });
+      let recordingStartTime = null;
+      let progressInterval = null;
+
+      // 更新录音进度
+      function updateProgress() {
+        if (!recordingStartTime) return;
+
+        const currentTime = new Date();
+        const elapsedSeconds = Math.floor((currentTime - recordingStartTime) / 1000);
+        const minutes = Math.floor(elapsedSeconds / 60);
+        const seconds = elapsedSeconds % 60;
+
+        // 格式化时间显示
+        const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        document.querySelector('.time-stamp').textContent = `${timeStr} / 05:00`;
+
+        // 更新进度条
+        const progressPercent = Math.min((elapsedSeconds / 300) * 100, 100); // 最大5分钟
+        document.querySelector('.progress').style.width = `${progressPercent}%`;
+
+        // 如果达到5分钟，自动停止录音
+        if (elapsedSeconds >= 300) {
+          stopRecording();
+        }
+      }
+
+      // 开始录音
+      function startRecording() {
+        // 隐藏初始录音按钮，显示主界面
+        document.getElementById('initialRecordBtn').style.display = 'none';
+        document.querySelector('.meeting-content').classList.add('active');
+        document.querySelector('.voice-controls').classList.add('active');
+
+        recordingStartTime = new Date();
+        document.querySelector('.time-stamp').textContent = '00:00 / 05:00';
+        document.querySelector('.progress').style.width = '0%';
+
+        // 启动进度更新定时器
+        progressInterval = setInterval(updateProgress, 1000);
+
+        // 显示暂停按钮
+        const pauseBtn = document.querySelector('.control-btn.pause');
+        pauseBtn.style.display = 'flex';
+        pauseBtn.querySelector('.icon').textContent = '⏸';
+        pauseBtn.querySelector('span:not(.icon)').textContent = '暂停';
+      }
+
+      // 停止录音
+      function stopRecording() {
+        recordingStartTime = null;
+        clearInterval(progressInterval);
+
+        const recordBtn = document.getElementById('recordBtn');
+        recordBtn.classList.remove('recording');
+        recordBtn.querySelector('.record-icon').textContent = '🎤';
+        recordBtn.querySelector('.btn-text').textContent = '开始录音';
+
+        // 隐藏暂停按钮
+        document.querySelector('.control-btn.pause').style.display = 'none';
+      }
+
+      // 暂停/继续录音
+      function togglePause() {
+        const pauseBtn = document.querySelector('.control-btn.pause');
+        const isPaused = pauseBtn.classList.contains('paused');
+
+        if (isPaused) {
+          // 继续录音
+          recordingStartTime = new Date(
+            new Date() - parseFloat(document.querySelector('.progress').style.width) * 3000
+          );
+          progressInterval = setInterval(updateProgress, 1000);
+          pauseBtn.classList.remove('paused');
+          pauseBtn.querySelector('.icon').textContent = '⏸';
+          pauseBtn.querySelector('span:not(.icon)').textContent = '暂停';
+        } else {
+          // 暂停录音
+          clearInterval(progressInterval);
+          pauseBtn.classList.add('paused');
+          pauseBtn.querySelector('.icon').textContent = '▶';
+          pauseBtn.querySelector('span:not(.icon)').textContent = '继续';
+        }
+      }
+
+      // 初始录音按钮点击事件
+      document.getElementById('initialRecordBtn').addEventListener('click', function () {
+        const btn = document.getElementById('recordBtn');
+        btn.classList.add('recording');
+        btn.querySelector('.record-icon').textContent = '🎤';
+        btn.querySelector('.btn-text').textContent = '录音中...';
+
+        startRecording();
+        initializeConversation();
+      });
+
+      // 录音按钮点击事件
+      document.getElementById('recordBtn').addEventListener('click', function () {
+        const btn = this;
+
+        if (btn.classList.contains('recording')) {
+          stopRecording();
+        }
+      });
+
+      // 暂停按钮点击事件
+      document.querySelector('.control-btn.pause').addEventListener('click', togglePause);
+
+      // 初始化时隐藏暂停按钮
+      document.querySelector('.control-btn.pause').style.display = 'none';
     </script>
-</body>
+  </body>
 </html>

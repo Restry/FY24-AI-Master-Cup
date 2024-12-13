@@ -1200,7 +1200,7 @@ main {
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    height: 400px;
+    height: 580px;
     overflow-y: auto;
 }
 
@@ -2960,4 +2960,35 @@ main {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* 添加到现有的 styles.css 文件中 */
+.message, .copilot-suggestion {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.message.hidden, .copilot-suggestion.hidden {
+    display: none;
+}
+
+.message.fade-in, .copilot-suggestion.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 打字机光标样式 */
+.typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    background-color: #333;
+    margin-left: 2px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
 }

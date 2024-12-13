@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>收集信息动画</title>
+  <style>
+    .collection-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+    }
+
+    .collection-box {
+      padding: 2rem;
+      border: 2px solid #333;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .collection-text {
+      font-size: 1.2em;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon {
+      width: 32px;
+      height: 32px;
+      stroke: #333;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .dots {
+      display: inline-block;
+      position: relative;
+      width: 30px;
+      text-align: left;
+    }
+
+    .dots::after {
+      content: '...';
+      position: absolute;
+      left: 0;
+      animation: loading 1.5s infinite;
+      letter-spacing: 2px;
+    }
+
+    @keyframes loading {
+      0% { content: '.'; }
+      33% { content: '..'; }
+      66% { content: '...'; }
+    }
+
+    .fade {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .fade.show {
+      opacity: 1;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #333;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .file-info {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 5px;
+      font-family: monospace;
+    }
+
+    .collection-text {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .text-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="collection-container">
+    <div class="collection-box">
+      <div class="spinner"></div>
+      <div class="collection-text fade">
+        <div class="text-row">
+          <svg class="icon meeting-icon" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <svg class="icon voice-icon" style="display:none;" viewBox="0 0 24 24">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+          </svg>
+          <svg class="icon summary-icon" style="display:none;" viewBox="0 0 24 24">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+          <span class="message">正在收集晨会总结</span>
+          <span class="dots"></span>
+        </div>
+        <div class="file-info"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const messages = [
+      '正在收集晨会总结',
+      '正在收集现场拜访录音文本',
+      '正在总结'
+    ];
+
+    const fileTypes = [
+      ['meeting_summary_20240315.md', 'daily_report.pdf'],
+      ['site_visit_001.mp3', 'voice_transcript.txt'],
+      ['final_summary.docx']
+    ];
+    
+    const textElement = document.querySelector('.message');
+    const fadeElement = document.querySelector('.fade');
+    const fileInfoElement = document.querySelector('.file-info');
+    const meetingIcon = document.querySelector('.meeting-icon');
+    const voiceIcon = document.querySelector('.voice-icon');
+    const summaryIcon = document.querySelector('.summary-icon');
+    let currentIndex = 0;
+    let currentFileIndex = 0;
+
+    const icons = [meetingIcon, voiceIcon, summaryIcon];
+
+    function updateFileInfo() {
+      const currentFiles = fileTypes[currentIndex];
+      currentFileIndex = (currentFileIndex + 1) % currentFiles.length;
+      fileInfoElement.textContent = currentFiles[currentFileIndex];
+    }
+
+    function updateMessage() {
+      fadeElement.classList.remove('show');
+      
+      setTimeout(() => {
+        textElement.textContent = messages[currentIndex];
+        fadeElement.classList.add('show');
+        
+        // 更新图标显示
+        icons.forEach((icon, index) => {
+          icon.style.display = index === currentIndex ? 'block' : 'none';
+        });
+
+        // 重置文件索引并更新文件信息
+        currentFileIndex = 0;
+        updateFileInfo();
+        
+        currentIndex = (currentIndex + 1) % messages.length;
+      }, 500);
+    }
+
+    // 初始显示
+    fadeElement.classList.add('show');
+    updateFileInfo();
+    
+    // 每3秒切换一次消息
+    setInterval(updateMessage, 3000);
+    // 每1秒切换一次文件名
+    setInterval(() => {
+      if (fadeElement.classList.contains('show')) {
+        updateFileInfo();
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
